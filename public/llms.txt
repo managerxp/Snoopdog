@@ -1,0 +1,24 @@
+# SnoopDog
+
+> SnoopDog is a local pet store in Garacharama, Sri Vijaya Puram (Andaman and Nicobar Islands, India). It sells food, care products, comfort items (beds), toys and accessories for dogs and cats, with home delivery across the Andaman and Nicobar Islands. There is no online checkout: customers ask about stock and prices on WhatsApp or by phone.
+
+- Address: Shop No. 03, First Floor, near Medical Bus Stop, Garacharama, Sri Vijaya Puram, Andaman and Nicobar Islands 744105
+- Hours: Daily, 8:30 AM to 9:00 PM
+- WhatsApp and phone: +91 99332 14383
+- Email: snoopdog.pets99@gmail.com
+- Instagram: https://www.instagram.com/snoopdog_andamans/
+- Google Maps: https://maps.app.goo.gl/izPf9ugWQmbmEwhB9
+- Pets served: dogs and cats. No grooming service.
+
+## Pages
+
+- [Home](https://snoopdogandaman.in/): what the store sells, brands in the store, how to visit
+- [Delivery](https://snoopdogandaman.in/delivery): home delivery across the Andaman and Nicobar Islands; message the store to confirm your area
+- [Questions](https://snoopdogandaman.in/faq): answers to common questions
+- [Contact](https://snoopdogandaman.in/contact): address, map, hours, WhatsApp, phone and email
+- [Privacy](https://snoopdogandaman.in/privacy): how the website handles your information (it collects none)
+
+## Notes
+
+- Prices and stock change, so they are not listed on the site. Ask on WhatsApp for current availability and price.
+- Brands shown on the site are brands stocked in the store, not partnerships.
