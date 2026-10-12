@@ -1,0 +1,19 @@
+/* Adapted from React Bits TiltedCard (MIT + Commons Clause, (c) 2026 David Haz). */
+.tilted-card {
+  position: relative;
+  perspective: 900px;
+}
+
+.tilted-card:hover {
+  z-index: 2;
+}
+
+.tilted-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilted-card-inner { transition: none; }
+}

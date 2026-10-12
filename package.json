@@ -1,0 +1,33 @@
+{
+  "name": "snoopdog-website",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite-react-ssg build",
+    "preview": "vite preview",
+    "postbuild": "node scripts/sitemap.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/figtree": "^5.3.0",
+    "@fontsource-variable/gabarito": "^5.3.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.48.0",
+    "motion": "^14.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^6.30.0",
+    "tailwind-merge": "^3.7.0",
+    "vite-react-ssg": "^0.9.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "tailwindcss": "^4.2.1",
+    "vite": "^7.3.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
