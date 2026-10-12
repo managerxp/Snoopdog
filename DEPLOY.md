@@ -98,6 +98,15 @@ Run it again to step back further. Nothing is deleted until it falls out of the 
 | `/images/*` | 7 days | names do not change when an image is replaced |
 | pages, `robots.txt`, `sitemap.xml` | revalidate every time | a new release appears at once |
 
+**Service worker (`public/sw.js`):** after a first visit the browser keeps the scripts, styles, fonts and images itself, so repeat visits load without waiting on the network and the pages open offline. Pages are always fetched fresh first, so a new release still shows at once; the saved copy is used only when the network is down. Deploys need no change to it. To switch it off for everyone, deploy a `sw.js` that calls `self.registration.unregister()`.
+
+**Brotli (optional, about 15-20% smaller text files than gzip):** `sudo apt install libnginx-mod-http-brotli-filter libnginx-mod-http-brotli-static`, then add these two lines next to `gzip on;` in `deploy/nginx.conf` and run `sudo nginx -t && sudo systemctl reload nginx`:
+
+```
+brotli on;
+brotli_types text/css application/javascript application/json image/svg+xml text/plain application/xml;
+```
+
 There is no CDN. If traffic ever outgrows the VPS, put Cloudflare in front; these headers already suit it.
 
 ## Checks after a deploy
