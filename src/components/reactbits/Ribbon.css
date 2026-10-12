@@ -1,0 +1,38 @@
+/* Adapted from the React Bits LogoLoop idea (MIT + Commons Clause, (c) 2026 David Haz). */
+.ribbon {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ribbon__track {
+  display: flex;
+  width: max-content;
+  animation: ribbon-slide var(--ribbon-speed, 40s) linear infinite;
+  will-change: transform;
+}
+
+.ribbon:hover .ribbon__track {
+  animation-play-state: paused;
+}
+
+.ribbon__list {
+  display: flex;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ribbon__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+@keyframes ribbon-slide {
+  /* four equal halves: slide by one */
+  to { transform: translateX(-25%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon__track { animation: none; }
+}

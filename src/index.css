@@ -1,0 +1,197 @@
+@import "tailwindcss" source(none);
+@source "../index.html";
+@source "./";
+
+/* `dark:` follows the site's own switch (data-theme on <html>), not just the operating system setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Palette sampled from the customer's colour references (navy, blues, oranges) and the card and logo art. */
+@theme {
+  --color-night: #07182F;     /* deepest navy: header, hero, gallery, footer */
+  --color-navy: #0B2A57;      /* the dog silhouette and raised dark surfaces */
+  --color-brand: #0F3E8A;     /* the cards' blue: text and buttons on light */
+  --color-brand-deep: #0A2F6B;
+  --color-blue: #1F6FC8;
+  --color-sky: #2DB0F2;       /* light blue accent on dark */
+  --color-mist: #DCEBF8;      /* light blue field, from the new logo's light blue */
+  --color-paper: #F5F9FD;     /* page ground on light sections */
+  --color-ink: #0A1A33;       /* text on light and on orange */
+  --color-soft: #35507A;      /* secondary text on paper */
+  --color-soft-mist: #2E4A75; /* secondary text on mist */
+  --color-soft-night: #B9CCE6;/* secondary text on dark */
+  --color-sun: #FF7A1A;       /* the orange: buttons, fields and fills, never small text on light */
+  --color-sun-text: #C2410C;  /* orange that is legible as text or icons on light */
+  --color-amber: #FFB020;
+  --color-open: #5EE08A;      /* "open now" on dark */
+  --color-green: #0B5A2A;     /* "open now" on light */
+
+  --font-display: "Gabarito Variable", ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree Variable", system-ui, "Segoe UI", sans-serif;
+
+  --animate-settle: settle 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  @keyframes settle {
+    from { opacity: 0.001; transform: translateY(18px) scale(0.97); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* Theme tokens: the light mode is the default; the dark mode turns the content sections navy too. */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-fg: var(--fg);
+  --color-title: var(--title);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-ok: var(--ok);
+  --color-link-hover: var(--link-hover);
+  --color-chrome: var(--chrome-bg);
+  --color-chrome-fg: var(--chrome-fg);
+  --color-chrome-heading: var(--chrome-heading);
+  --color-chrome-muted: var(--chrome-muted);
+  --color-chrome-accent: var(--chrome-accent);
+  --color-chrome-line: var(--chrome-line);
+}
+:root {
+  color-scheme: light;
+  --surface: #F5F9FD;
+  --surface-alt: #DCEBF8;
+  --fg: #0A1A33;
+  --title: #0F3E8A;
+  --muted: #35507A;
+  --line: rgb(10 26 51 / 0.15);
+  --accent: #C2410C;
+  --ok: #0B5A2A;
+  --link-hover: #1F6FC8;
+  /* "chrome": header, hero, intro bands and footer. Light in light mode, deep navy in dark mode. */
+  --chrome-bg: #E3EEF9;
+  --chrome-fg: #0A1A33;
+  --chrome-heading: #0A1A33;
+  --chrome-muted: #35507A;
+  --chrome-accent: #0F3E8A;
+  --chrome-line: rgb(10 26 51 / 0.18);
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface: #11305C;
+  --surface-alt: #184074;
+  --fg: #F2F7FC;
+  --title: #4FBDF7;
+  --muted: #B9CCE6;
+  --line: rgb(185 204 230 / 0.22);
+  --accent: #FF7A1A;
+  --ok: #5EE08A;
+  --link-hover: #FFFFFF;
+  --chrome-bg: #06142A;
+  --chrome-fg: #F5F9FD;
+  --chrome-heading: #FFFFFF;
+  --chrome-muted: #B9CCE6;
+  --chrome-accent: #4FBDF7;
+  --chrome-line: rgb(185 204 230 / 0.22);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scrollbar-color: var(--title) var(--surface); }
+  body {
+    background: var(--surface);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    caret-color: var(--title);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgb(255 122 26 / 0.25);
+  }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+  ::selection { background: var(--color-sun); color: var(--color-night); }
+  :focus-visible {
+    outline: 3px solid var(--title);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--surface);
+    border-radius: 4px;
+  }
+  .on-dark :focus-visible { outline-color: var(--color-sky); box-shadow: 0 0 0 6px var(--color-night); }
+  .on-chrome :focus-visible { outline-color: var(--chrome-accent); box-shadow: 0 0 0 6px var(--chrome-bg); }
+  .on-sun :focus-visible { outline-color: var(--color-night); box-shadow: 0 0 0 6px var(--color-sun); }
+  section[id] { scroll-margin-top: 1rem; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+}
+
+@layer components {
+  .wrap { width: 100%; max-width: 75rem; margin-inline: auto; padding-inline: max(1rem, env(safe-area-inset-left)) max(1rem, env(safe-area-inset-right)); }
+  @media (min-width: 48rem) { .wrap { padding-inline: 1.5rem; } }
+
+  /* the paw pattern from the business cards, faint, on dark sections */
+  .paw-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150' fill='%230F3E8A' fill-opacity='0.06'%3E%3Cg transform='translate(22 28) rotate(-18) scale(1.7)'%3E%3Cellipse cx='12' cy='16.5' rx='5' ry='4'/%3E%3Ccircle cx='5.5' cy='11' r='2.2'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='14.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='18.5' cy='11' r='2.2'/%3E%3C/g%3E%3Cg transform='translate(98 92) rotate(22) scale(1.7)'%3E%3Cellipse cx='12' cy='16.5' rx='5' ry='4'/%3E%3Ccircle cx='5.5' cy='11' r='2.2'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='14.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='18.5' cy='11' r='2.2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 150px 150px;
+  }
+  :root[data-theme='dark'] .paw-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150' fill='%232DB0F2' fill-opacity='0.07'%3E%3Cg transform='translate(22 28) rotate(-18) scale(1.7)'%3E%3Cellipse cx='12' cy='16.5' rx='5' ry='4'/%3E%3Ccircle cx='5.5' cy='11' r='2.2'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='14.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='18.5' cy='11' r='2.2'/%3E%3C/g%3E%3Cg transform='translate(98 92) rotate(22) scale(1.7)'%3E%3Cellipse cx='12' cy='16.5' rx='5' ry='4'/%3E%3Ccircle cx='5.5' cy='11' r='2.2'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='14.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='18.5' cy='11' r='2.2'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .paw-bg-dark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150' fill='%232DB0F2' fill-opacity='0.07'%3E%3Cg transform='translate(22 28) rotate(-18) scale(1.7)'%3E%3Cellipse cx='12' cy='16.5' rx='5' ry='4'/%3E%3Ccircle cx='5.5' cy='11' r='2.2'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='14.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='18.5' cy='11' r='2.2'/%3E%3C/g%3E%3Cg transform='translate(98 92) rotate(22) scale(1.7)'%3E%3Cellipse cx='12' cy='16.5' rx='5' ry='4'/%3E%3Ccircle cx='5.5' cy='11' r='2.2'/%3E%3Ccircle cx='9.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='14.5' cy='6.5' r='2.4'/%3E%3Ccircle cx='18.5' cy='11' r='2.2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 150px 150px;
+  }
+
+  /* a zigzag top edge, echoing the customer's mountain-stripe reference: the section's own colour rises into the one above */
+  .zig-top { position: relative; }
+  .zig-top::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: -17px;
+    height: 18px;
+    background: inherit;
+    -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 34px 100%;
+    mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 34px 100%;
+  }
+
+  /* the hero logo badge: pops in once, then floats gently (no spinning) */
+  .logo-float {
+    animation: logo-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both, logo-bob 5s ease-in-out 1.2s infinite alternate;
+    will-change: transform;
+  }
+  @keyframes logo-pop { from { opacity: 0; transform: scale(0.4) rotate(-14deg); } to { opacity: 1; transform: none; } }
+  @keyframes logo-bob { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-12px) rotate(3deg); } }
+  @media (prefers-reduced-motion: reduce) { .logo-float { animation: none; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    min-height: 3.25rem; padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+    font-weight: 700; line-height: 1.1; text-decoration: none; white-space: nowrap;
+    transition: background-color 0.18s, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), color 0.18s, border-color 0.18s;
+  }
+  .btn:active { transform: scale(0.98); }
+  /* orange: the main action, on dark and on light */
+  .btn-primary { background: var(--color-sun); color: var(--color-night); }
+  @media (hover: hover) { .btn-primary:hover { background: var(--color-amber); } }
+  /* outline, for use on light */
+  .btn-ghost { border: 2px solid var(--title); color: var(--title); }
+  @media (hover: hover) { .btn-ghost:hover { background: var(--title); color: var(--surface); } }
+  /* outline button that follows the header/hero colours */
+  .btn-chrome { border: 2px solid var(--chrome-fg); color: var(--chrome-fg); }
+  @media (hover: hover) { .btn-chrome:hover { background: var(--chrome-fg); color: var(--chrome-bg); } }
+  /* the card wordmark, tinted with the surrounding text colour */
+  .wordmark {
+    display: inline-block;
+    aspect-ratio: 1066 / 234;
+    background: currentColor;
+    -webkit-mask: url(/images/wordmark-white.webp) center / contain no-repeat;
+    mask: url(/images/wordmark-white.webp) center / contain no-repeat;
+  }
+  /* headline words rise in one after another: pure CSS, so the text is there from first paint */
+  .word-in { animation: word-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes word-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  /* outline, for use on dark */
+  .btn-outline-light { border: 2px solid var(--color-paper); color: var(--color-paper); }
+  @media (hover: hover) { .btn-outline-light:hover { background: var(--color-paper); color: var(--color-night); } }
+  /* solid navy, for use on the orange field */
+  .btn-night { background: var(--color-night); color: #fff; }
+  @media (hover: hover) { .btn-night:hover { background: var(--color-navy); } }
+  .btn-outline-night { border: 2px solid var(--color-night); color: var(--color-night); }
+  @media (hover: hover) { .btn-outline-night:hover { background: var(--color-night); color: #fff; } }
+}
