@@ -15,14 +15,15 @@ import Ribbon from '../components/reactbits/Ribbon.jsx';
 import LazyPhoto from '../components/LazyPhoto.jsx';
 import { generalEnquiry, productEnquiry, site, telUrl, whatsappUrl } from '../site.js';
 
-const title = 'SnoopDog | Pet food, care and toys in Sri Vijaya Puram';
+const title = 'SnoopDog Andaman | Pet Store in Sri Vijaya Puram';
 const description =
-  'SnoopDog is a pet store in Garacharama, Sri Vijaya Puram. Food, care, comfort, toys and accessories for dogs and cats, with home delivery across the Andaman & Nicobar Islands.';
+  'SnoopDog Andaman: pet food, care, beds, toys and accessories for dogs and cats in Garacharama, Sri Vijaya Puram. Home delivery across the islands.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'PetStore',
   name: site.name,
+  alternateName: ['Snoopdog Andaman', 'SnoopDog Andaman Pet Store'],
   description,
   ...(siteUrl && { url: siteUrl, image: `${siteUrl}/images/og.jpg` }),
   telephone: `+${site.phone}`,

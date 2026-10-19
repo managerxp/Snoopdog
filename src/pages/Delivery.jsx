@@ -10,7 +10,7 @@ export default function Delivery() {
   return (
     <>
       <Seo
-        title="Home delivery in the Andaman & Nicobar Islands | SnoopDog"
+        title="Home delivery in the Andaman & Nicobar Islands | SnoopDog Andaman"
         description="SnoopDog delivers pet food, care essentials, comfort items, toys and accessories across the Andaman & Nicobar Islands. Message us to confirm availability, price and delivery for your area."
       />
       <PageIntro title="Home delivery across the Andaman & Nicobar Islands.">
