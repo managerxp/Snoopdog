@@ -19,7 +19,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact and directions | SnoopDog Andaman, Garacharama"
-        description="Find SnoopDog near the Medical Bus Stop, Garacharama, Sri Vijaya Puram. Open daily 8:30 AM to 9:00 PM. WhatsApp, call or get directions."
+        description="Find SnoopDog near the Medical Bus Stop, Garacharama, Andaman. Open daily 8:30 AM to 9:00 PM. WhatsApp, call or get directions."
       />
       <PageIntro title="Come in, call, or message us.">
         We are on the first floor near the Medical Bus Stop in Garacharama.

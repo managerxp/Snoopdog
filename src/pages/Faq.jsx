@@ -43,7 +43,7 @@ export default function Faq() {
   return (
     <>
       <Seo
-        title="Questions | SnoopDog pet store, Sri Vijaya Puram"
+        title="Questions | SnoopDog Andaman pet store"
         description="Answers about SnoopDog: where to find us, opening hours, what we sell, home delivery across the Andaman & Nicobar Islands and how to order."
       />
       <PageIntro title="Questions, answered.">Everything people ask us before they visit or message.</PageIntro>

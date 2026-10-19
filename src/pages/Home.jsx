@@ -15,9 +15,9 @@ import Ribbon from '../components/reactbits/Ribbon.jsx';
 import LazyPhoto from '../components/LazyPhoto.jsx';
 import { generalEnquiry, productEnquiry, site, telUrl, whatsappUrl } from '../site.js';
 
-const title = 'SnoopDog Andaman | Pet Store in Sri Vijaya Puram';
+const title = 'SnoopDog Andaman | Pet Store, Garacharama';
 const description =
-  'SnoopDog Andaman: pet food, care, beds, toys and accessories for dogs and cats in Garacharama, Sri Vijaya Puram. Home delivery across the islands.';
+  'SnoopDog Andaman: pet food, care, beds, toys and accessories for dogs and cats in Garacharama, Andaman. Home delivery across the islands.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
